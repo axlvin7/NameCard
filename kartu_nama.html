@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartu Nama Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .card {
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .photo-container::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(99,102,241,0.3) 0%, rgba(168,85,247,0.3) 100%);
+        }
+        .contact-btn {
+            transition: all 0.3s ease;
+        }
+        .contact-btn:hover {
+            transform: scale(1.05);
+        }
+        .instagram-btn {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+        .whatsapp-btn {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+        }
+    </style>
+</head>
+<body>
+    <div class="card max-w-sm w-full bg-white rounded-2xl overflow-hidden shadow-lg">
+        <div class="relative pt-8 pb-5 px-8 flex flex-col items-center">
+            <div class="photo-container relative mb-6">
+                <img src="https://placehold.co/400x400" alt="Foto profil profesional dengan latar belakang netral mengenakan kemeja formal" class="w-32 h-32 object-cover rounded-full border-4 border-white shadow-md z-10 relative">
+            </div>
+            <h1 class="text-2xl font-bold text-gray-800 mb-1">Dustin Julian Chandra</h1>
+            <p class="text-indigo-600 font-medium mb-6">Siswa SMA Kristen Immanuel</p>
+            <p class="text-gray-600 text-center mb-6">Pendiri/Founder PUKIMAK.ID</p>
+            
+            <div class="flex space-x-4 w-full">
+                <!-- Ganti USERNAME_INSTAGRAM dengan username Instagram yang benar -->
+                <a href="https://www.instagram.com/kerenn1123?igsh=MXExMWJna3BwNTUwZg==" target="_blank" class="contact-btn instagram-btn flex-1 flex items-center justify-center py-2 px-4 rounded-lg text-white">
+                    <i class="fab fa-instagram mr-2"></i>
+                    Instagram
+                </a>
+                <!-- Ganti NOMOR_WHATSAPP dengan nomor yang benar (format: 6281234567890) -->
+                <a href="https://wa.me/6282149167000" target="_blank" class="contact-btn whatsapp-btn flex-1 flex items-center justify-center py-2 px-4 rounded-lg text-white">
+                    <i class="fab fa-whatsapp mr-2"></i>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+        
+        <div class="bg-gray-50 px-6 py-4">
+            <div class="flex justify-between text-gray-600 text-sm">
+                <div class="flex items-center">
+                    <i class="fas fa-map-marker-alt mr-2 text-indigo-500"></i>
+                    
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-envelope mr-2 text-indigo-500"></i>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk menambahkan nomor WhatsApp klik langsung
+        document.querySelector('.whatsapp-btn').addEventListener('click', function(e) {
+            if (!confirm('Anda akan dialihkan ke WhatsApp. Lanjutkan?')) {
+                e.preventDefault();
+            }
+        });
+
+        // Animasi saat hover foto profil
+        const photo = document.querySelector('.photo-container img');
+        photo.addEventListener('mouseenter', () => {
+            photo.style.transform = 'scale(1.05)';
+        });
+        photo.addEventListener('mouseleave', () => {
+            photo.style.transform = 'scale(1)';
+        });
+
+        // Fungsi untuk menambahkan parameter default jika belum diisi
+        document.addEventListener('DOMContentLoaded', function() {
+            const waLink = document.querySelector('.whatsapp-btn');
+            const igLink = document.querySelector('.instagram-btn');
+            
+            if(waLink.getAttribute('href') === 'https://wa.me/6282149167000') {
+                waLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Silakan ganti NOMOR_WHATSAPP dengan nomor WhatsApp Anda');
+                });
+            }
+            
+            if(igLink.getAttribute('href') === 'https://instagram.com/https://www.instagram.com/kerenn1123?igsh=MXExMWJna3BwNTUwZg==') {
+                igLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Silakan ganti USERNAME_INSTAGRAM dengan username Instagram Anda');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
